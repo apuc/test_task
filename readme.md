@@ -40,7 +40,8 @@ GROUP BY LEAST(t1.id, t2.id), GREATEST(t1.id, t2.id)
 <br>index.php вывод в виде массива.
 <br>xml.php в виде XML документа
 <br>json.php в виде JSON
+<br>some.php некоторые методы отдельно
 
 parser/Parser.php - основные методы парсера.
-parser/Html/php - методы для парсинга html страниц.
-parser/tags - директория для файлов расширений работы с тегами
+<br>parser/Html/php - методы для парсинга html страниц.
+<br>parser/tags - директория для файлов расширений работы с тегами

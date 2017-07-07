@@ -35,19 +35,21 @@ class Html extends Parser
     }
 
     /**
+     * @return array
      * Получение тега img с необходимыми атрибутами
      */
     public function getImg()
     {
-        $this->images = $this->getCustomTag('img', ['alt', 'src', 'title', 'width', 'height']);
+        return $this->images = $this->getCustomTag('img', ['alt', 'src', 'title', 'width', 'height']);
     }
 
     /**
+     * @return array
      * Получение тега a
      */
     public function getA()
     {
-        $this->links = $this->getCustomTag('a');
+        return $this->links = $this->getCustomTag('a');
     }
 
     /**
