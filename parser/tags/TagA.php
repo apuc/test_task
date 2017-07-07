@@ -14,6 +14,11 @@ use parser\Tag;
 class TagA implements Tag
 {
 
+    /**
+     * @param $file
+     * @return array
+     * Шаблон для работы с тегом
+     */
     public function getTag($file)
     {
         $tpl = '|<a.*(?=href=\"([^\"]*)\")[^>]*>([^<]*)</a>|i';

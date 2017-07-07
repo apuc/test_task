@@ -11,6 +11,10 @@ namespace config;
 class Main
 {
 
+    /**
+     * @return array
+     * Конфигурации для html парсера
+     */
     public static function html()
     {
         return [

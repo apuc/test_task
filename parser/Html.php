@@ -24,6 +24,9 @@ class Html extends Parser
         $this->parseTagsSimple();
     }
 
+    /**
+     * Парсит теги в упрощенном варианте, т.е. название тега и их кол-во.
+     */
     public function parseTagsSimple()
     {
         preg_match_all('/<([^\/!][a-z1-9]*)/i', $this->file, $matches);
@@ -31,16 +34,25 @@ class Html extends Parser
         $this->allTagsCount = array_count_values($matches[1]);
     }
 
+    /**
+     * Получение тега img с необходимыми атрибутами
+     */
     public function getImg()
     {
         $this->images = $this->getCustomTag('img', ['alt', 'src', 'title', 'width', 'height']);
     }
 
+    /**
+     * Получение тега a
+     */
     public function getA()
     {
         $this->links = $this->getCustomTag('a');
     }
 
+    /**
+     * Парсит все теги
+     */
     public function parseTags()
     {
         $result = [];
@@ -51,6 +63,12 @@ class Html extends Parser
         $this->result = $result;
     }
 
+    /**
+     * @param $tag
+     * @param null $attr
+     * @return array
+     * Получает определнный тег с его атрибутами, если существует файл для обработки тега, то использует его
+     */
     public function getCustomTag($tag, $attr = null)
     {
         if ($fileTagObj = $this->getFileTagObj($tag)) {
@@ -86,11 +104,21 @@ class Html extends Parser
         ];
     }
 
+    /**
+     * @param $tag
+     * @return mixed
+     * Получает кол-во тегов
+     */
     public function getTagCount($tag)
     {
         return $this->allTagsCount[$tag];
     }
 
+    /**
+     * @param $tag
+     * @return bool|string
+     * Проверка на существование файла для обработки тега
+     */
     public function issetFileTag($tag)
     {
         $fileTag = 'Tag' . ucfirst($tag);
@@ -100,6 +128,11 @@ class Html extends Parser
         return false;
     }
 
+    /**
+     * @param $tag
+     * @return bool
+     * Получает объект для обработки тега
+     */
     public function getFileTagObj($tag)
     {
         if($fileTag = $this->issetFileTag($tag)){

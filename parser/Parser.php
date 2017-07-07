@@ -26,6 +26,9 @@ class Parser
 
     }
 
+    /**
+     * @param $file
+     */
     public function load($file)
     {
         if (file_exists($file)) {
@@ -37,12 +40,18 @@ class Parser
         }
     }
 
+    /**
+     * Возвращает результат в виде JSON
+     */
     public function responseJson()
     {
         header('Content-type:application/json;charset=utf-8');
         echo json_encode($this->result);
     }
 
+    /**
+     * Возвращает результат в виде XML
+     */
     public function responseXml()
     {
         $xml = new SimpleXMLElement('<?xml version="1.0"?><data></data>');
@@ -51,6 +60,11 @@ class Parser
         echo $xml->asXML();
     }
 
+    /**
+     * @param $data
+     * @param $xml_data
+     * Переводит массив в XML
+     */
     private function arrayToXml($data, &$xml_data)
     {
         foreach ($data as $key => $value) {
